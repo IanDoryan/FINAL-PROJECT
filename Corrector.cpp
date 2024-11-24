@@ -44,14 +44,6 @@ void	ListaCandidatas		(
 	char	szListaFinal[][TAMTOKEN],			//Lista final de palabras a sugerir
 	int		iPeso[],							//Peso de las palabras en la lista final
 	int &	iNumLista)							//Numero de elementos en la szListaFinal
-{
-
-	//Sustituya estas lineas por su código
-	strcpy(szListaFinal[0], szPalabrasSugeridas[ 0] ); //la palabra candidata
-	iPeso[0] = iEstadisticas[0];			// el peso de la palabra candidata
-	
-	iNumLista = 1;							//Una sola palabra candidata
-}
 
 /*****************************************************************************************************************
 	ClonaPalabras: toma una palabra y obtiene todas las combinaciones y permutaciones requeridas por el metodo
