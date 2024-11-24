@@ -92,5 +92,19 @@ void	ClonaPalabras(
 			}
 		}
 	}
+	//eliminacion de caracteres pero solo si hay mas de uno
+	if (lenPalabraLeida > 1) {
+		for (int i = 0; i < lenPalabraLeida; i++) {
+			strncpy_s(copia, TAMTOKEN, szPalabraLeida, i);
+			strncpy_s(copia + i, TAMTOKEN - i, szPalabraLeida + i + 1, TAMTOKEN - i - 1);
+			copia[lenPalabraLeida] = '\0';
+			if (iNumSugeridas < 3300) {
+				strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, copia);
+				//printf("Añadido: %s (iNumSugeridas: %d)\n", copia, iNumSugeridas + 1);
+				iNumSugeridas++;
+			}
+		}
+	}
+
 
 }
