@@ -64,6 +64,18 @@ void	ClonaPalabras(
 	//palabra original a la lista de sugerencias
 	strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, szPalabraLeida);
 	iNumSugeridas++;
+	//sustitucion de caracteres
+	for (int i = 0; i < lenPalabraLeida; i++) {
+		for (int j = 0; j < lenAlfabeto; j++) {
+			strncpy_s(copia, TAMTOKEN, szPalabraLeida, TAMTOKEN - 1);
+			copia[i] = ALFABETO[j];
+			if (iNumSugeridas < 3300) {
+				strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, copia);
+				//printf("Añadido: %s (iNumSugeridas: %d)\n", copia, iNumSugeridas + 1);
+				iNumSugeridas++;
+			}
+		}
+	}
 
 
 }
