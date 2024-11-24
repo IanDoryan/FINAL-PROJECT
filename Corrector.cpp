@@ -21,7 +21,22 @@
 	int		iEstadisticas[]			:	Arreglo con el numero de veces que aparecen las palabras en el diccionario
 	int &	iNumElementos			:	Numero de elementos en el diccionario
 ******************************************************************************************************************/
-void	Diccionario			(char *szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[], int &iNumElementos)
+void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[], int& iNumElementos)
+{
+	FILE* fp;
+	char buffer[500];
+	char palabra[TAMTOKEN];
+	int conta, contaPalabra;
+	iNumElementos = 0;
+	if (fopen_s(&fp, szNombre, "r") != 0) {
+		printf("No se pudo abrir el archivo: %s\n", szNombre);
+		return;
+	}
+	while (fgets(buffer, sizeof(buffer), fp) != NULL) {
+		conta = 0;
+		contaPalabra = 0;
+		while (buffer[conta] != '\0') {
+}
 
 /*****************************************************************************************************************
 	ListaCandidatas: Esta funcion recupera desde el diccionario las palabras validas y su peso
