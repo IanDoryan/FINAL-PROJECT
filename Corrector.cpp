@@ -107,6 +107,21 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 	}
 
 	fclose(fp);
+	//esta funcion ordena las palabras alfabeticamente :v
+	for (int i = 0; i < iNumElementos - 1; i++) {
+		for (int j = 0; j < iNumElementos - i - 1; j++) {
+			if (strcmp(szPalabras[j], szPalabras[j + 1]) > 0) {
+				char tempPalabra[TAMTOKEN];
+				strcpy_s(tempPalabra, TAMTOKEN, szPalabras[j]);
+				strcpy_s(szPalabras[j], TAMTOKEN, szPalabras[j + 1]);
+				strcpy_s(szPalabras[j + 1], TAMTOKEN, tempPalabra);
+
+				int tempEstadistica = iEstadisticas[j];
+				iEstadisticas[j] = iEstadisticas[j + 1];
+				iEstadisticas[j + 1] = tempEstadistica;
+			}
+		}
+	}
 }
 
 /*****************************************************************************************************************
