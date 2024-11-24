@@ -76,6 +76,37 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 			}
 			conta++;
 		}
+		//pasar la ultima palabra
+		if (contaPalabra > 0) {
+			palabra[contaPalabra] = '\0';
+
+			//pasarla a minuscul
+			for (int i = 0; i < contaPalabra; i++) {
+				if (palabra[i] >= 'A' && palabra[i] <= 'Z') {
+					palabra[i] += 32;
+				}
+			}
+
+			//procesarla
+			int found = 0;
+			for (int i = 0; i < iNumElementos; i++) {
+				if (strcmp(szPalabras[i], palabra) == 0) {
+					iEstadisticas[i]++;
+					found = 1;
+					break;
+				}
+			}
+			if (!found && iNumElementos < NUMPALABRAS) {
+				strcpy_s(szPalabras[iNumElementos], TAMTOKEN, palabra);
+				iEstadisticas[iNumElementos] = 1;
+				iNumElementos++;
+			}
+		}
+
+
+	}
+
+	fclose(fp);
 }
 
 /*****************************************************************************************************************
