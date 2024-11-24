@@ -36,6 +36,25 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 		conta = 0;
 		contaPalabra = 0;
 		while (buffer[conta] != '\0') {
+			//esto sirve para terminar una linea  si encuentra alguno termina la palabra
+			if (buffer[conta] == ' ' || buffer[conta] == ',' || buffer[conta] == '.' || buffer[conta] == '(' || buffer[conta] == ')' || buffer[conta] == ';' || buffer[conta] == '\n') {
+				palabra[contaPalabra] = '\0';
+				//convierto las letras en minusculas
+				for (int i = 0; i < contaPalabra; i++) {
+					if (palabra[i] >= 'A' && palabra[i] <= 'Z') {
+						palabra[i] += 32;
+					}
+				}
+				//si la palabra esta en el arreglo solo aumenta las estadisticas
+				if (contaPalabra > 0) {
+					int found = 0;
+					for (int i = 0; i < iNumElementos; i++) {
+						if (strcmp(szPalabras[i], palabra) == 0) {
+							iEstadisticas[i]++;
+							found = 1;
+							break;
+						}
+					}
 }
 
 /*****************************************************************************************************************
