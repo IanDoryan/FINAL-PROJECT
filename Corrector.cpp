@@ -55,8 +55,3 @@ void	ClonaPalabras(
 	char *	szPalabraLeida,						// Palabra a clonar
 	char	szPalabrasSugeridas[][TAMTOKEN], 	//Lista de palabras clonadas
 	int &	iNumSugeridas)						//Numero de elementos en la lista
-{
-	//Sustituya estas lineas por su código
-	strcpy(szPalabrasSugeridas[0], szPalabraLeida); //lo que sea que se capture, es sugerencia
-	iNumSugeridas = 1;							//Una sola palabra sugerida
-}
