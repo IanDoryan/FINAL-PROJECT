@@ -76,6 +76,21 @@ void	ClonaPalabras(
 			}
 		}
 	}
-
+	//se ponen los caracteres en los posibles espacios, pero solo si hay uno o mas caractres en la cadena original
+	if (lenPalabraLeida >= 1) {
+		for (int i = 0; i <= lenPalabraLeida; i++) {
+			for (int j = 0; j < lenAlfabeto; j++) {
+				strncpy_s(copia, TAMTOKEN, szPalabraLeida, i);
+				copia[i] = ALFABETO[j];
+				strncpy_s(copia + i + 1, TAMTOKEN - i - 1, szPalabraLeida + i, TAMTOKEN - i - 1);
+				copia[lenPalabraLeida + 1] = '\0';
+				if (iNumSugeridas < 3300) {
+					strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, copia);
+					//printf("Añadido: %s (iNumSugeridas: %d)\n", copia, iNumSugeridas + 1);
+					iNumSugeridas++;
+				}
+			}
+		}
+	}
 
 }
