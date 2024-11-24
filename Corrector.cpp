@@ -105,6 +105,21 @@ void	ClonaPalabras(
 			}
 		}
 	}
-
+	// intercambio de caracteres solo si hay mas de uno  
+	for (int i = 0; i < lenPalabraLeida - 1; i++) {// i hasta len-1
+		for (int j = i + 1; j < i + 2; j++) {  // Solo un intercambio entre i y i+1
+			// Crear una copia de la palabra original
+			strcpy_s(copia, TAMTOKEN, szPalabraLeida);
+			char temp = copia[i];
+			copia[i] = copia[i + 1];
+			copia[i + 1] = temp;
+			if (iNumSugeridas < 3300) {
+				strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, copia);
+				//printf("Añadido: %s (iNumSugeridas: %d)\n", copia, iNumSugeridas + 1);
+				iNumSugeridas++;
+			}
+		}
+	}
+}
 
 }
