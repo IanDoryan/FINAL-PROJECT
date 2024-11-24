@@ -52,6 +52,18 @@ void	ListaCandidatas		(
 	int &	iNumSugeridas)						//Numero de elementos en la lista
 ******************************************************************************************************************/
 void	ClonaPalabras(
-	char *	szPalabraLeida,						// Palabra a clonar
+	char* szPalabraLeida,						// Palabra a clonar
 	char	szPalabrasSugeridas[][TAMTOKEN], 	//Lista de palabras clonadas
-	int &	iNumSugeridas)						//Numero de elementos en la lista
+	int& iNumSugeridas)	//Numero de elementos en la lista
+{
+	char copia[TAMTOKEN] = { 0 };
+	char ALFABETO[] = "abcdefghijklmnñopqrstuvwxyzáéíóú";
+	int lenPalabraLeida = strlen(szPalabraLeida);
+	int lenAlfabeto = strlen(ALFABETO);
+	iNumSugeridas = 0;
+	//palabra original a la lista de sugerencias
+	strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, szPalabraLeida);
+	iNumSugeridas++;
+
+
+}
