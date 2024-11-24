@@ -55,6 +55,27 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 							break;
 						}
 					}
+					//si la palabra no esta la copia a e incrementa las estadisticas 1 pq hay 1 palabra
+					if (!found && iNumElementos < NUMPALABRAS) {
+						strcpy_s(szPalabras[iNumElementos], TAMTOKEN, palabra);
+						iEstadisticas[iNumElementos] = 1;
+						(iNumElementos)++;
+					}
+				}
+				contaPalabra = 0;
+			}
+			else
+			{
+				//si en la linea no encuentra alguno de estos entonces toma todos los caractres y los va copiando
+
+					// acumula carácter en la palabra
+				if (contaPalabra < TAMTOKEN - 1) {
+					palabra[contaPalabra++] = buffer[conta];
+				}
+
+			}
+			conta++;
+		}
 }
 
 /*****************************************************************************************************************
