@@ -135,15 +135,41 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 	int		iPeso[],							//Peso de las palabras en la lista final
 	int &	iNumLista)							//Numero de elementos en la szListaFinal
 ******************************************************************************************************************/
-void	ListaCandidatas		(
-	char	szPalabrasSugeridas[][TAMTOKEN],	//Lista de palabras clonadas
-	int		iNumSugeridas,						//Lista de palabras clonadas
-	char	szPalabras[][TAMTOKEN],				//Lista de palabras del diccionario
-	int		iEstadisticas[],					//Lista de las frecuencias de las palabras
-	int		iNumElementos,						//Numero de elementos en el diccionario
-	char	szListaFinal[][TAMTOKEN],			//Lista final de palabras a sugerir
-	int		iPeso[],							//Peso de las palabras en la lista final
-	int &	iNumLista)//Numero de elementos en la szListaFinal
+void	ListaCandidatas(
+    char	szPalabrasSugeridas[][TAMTOKEN],	//Lista de palabras clonadas
+    int		iNumSugeridas,						//Lista de palabras clonadas
+    char	szPalabras[][TAMTOKEN],				//Lista de palabras del diccionario
+    int		iEstadisticas[],					//Lista de las frecuencias de las palabras
+    int		iNumElementos,						//Numero de elementos en el diccionario
+    char	szListaFinal[][TAMTOKEN],			//Lista final de palabras a sugerir
+    int		iPeso[],							//Peso de las palabras en la lista final
+    int& iNumLista) {//Numero de elementos en la szListaFinal
+    iNumLista = 0;
+    for (int i = 0; i < iNumSugeridas; i++) {
+        for (int j = 0; j < iNumElementos; j++) {
+            if (strcmp(szPalabrasSugeridas[i], szPalabras[j]) == 0) {
+                strcpy_s(szListaFinal[iNumLista], TAMTOKEN, szPalabras[j]);
+                iPeso[iNumLista] = iEstadisticas[j];
+                (iNumLista)++;
+            }
+
+        }
+    }
+    for (int i = 0; i < iNumLista - 1; i++) {
+        for (int j = i + 1; j < iNumLista; j++) {
+            if (iPeso[i] < iPeso[j]) {
+                int tempPeso = iPeso[i];
+                iPeso[i] = iPeso[j];
+                iPeso[j] = tempPeso;
+
+                char tempPalabra[TAMTOKEN];
+                strcpy_s(tempPalabra, szListaFinal[i]);
+                strcpy_s(szListaFinal[i], TAMTOKEN, szListaFinal[j]);
+                strcpy_s(szListaFinal[j], TAMTOKEN, tempPalabra);
+            }
+        }
+    }
+}
 
 
 /*****************************************************************************************************************
