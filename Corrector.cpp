@@ -156,7 +156,21 @@ void	ListaCandidatas(
 
         }
     }
-}//Numero de elementos en la szListaFinal
+    for (int i = 0; i < iNumLista - 1; i++) {
+        for (int j = i + 1; j < iNumLista; j++) {
+            if (iPeso[i] < iPeso[j]) {
+                int tempPeso = iPeso[i];
+                iPeso[i] = iPeso[j];
+                iPeso[j] = tempPeso;
+
+                char tempPalabra[TAMTOKEN];
+                strcpy_s(tempPalabra, szListaFinal[i]);
+                strcpy_s(szListaFinal[i], TAMTOKEN, szListaFinal[j]);
+                strcpy_s(szListaFinal[j], TAMTOKEN, tempPalabra);
+            }
+        }
+    }
+}
 
 /*****************************************************************************************************************
 	ClonaPalabras: toma una palabra y obtiene todas las combinaciones y permutaciones requeridas por el metodo
