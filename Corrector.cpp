@@ -120,6 +120,18 @@ void	ClonaPalabras(
 			}
 		}
 	}
+
+//ordencion de las sugerencias de manera alfabetica B)
+char temporal[TAMTOKEN];
+for (int a = 0;a < iNumSugeridas - 1; a++) {
+	for (int b = 0;b < iNumSugeridas - 1 - a;b++) {
+		if (strcmp(szPalabrasSugeridas[b], szPalabrasSugeridas[b + 1]) > 0) {
+			strcpy_s(temporal, szPalabrasSugeridas[b]);
+			strcpy_s(szPalabrasSugeridas[b], szPalabrasSugeridas[b + 1]);
+			strcpy_s(szPalabrasSugeridas[b + 1], temporal);
+		}
+	}
 }
+
 
 }
